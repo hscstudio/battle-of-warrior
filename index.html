@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Battle of Warrior</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <link rel="stylesheet" href="css/app.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+    </head>
+    <body>
+      <nav class="uk-navbar-container">
+        <div class="uk-container">
+            <div uk-navbar>
+    
+                <div class="uk-navbar-left">
+                  <div class="uk-navbar-item">
+                    <button class="uk-button uk-button-secondary uk-border-rounded"><span uk-icon="plus-circle"></span> Hero Left</button>
+                    <div uk-dropdown="mode: click">
+                      <ul class="uk-nav uk-dropdown-nav uk-list-striped">
+                      <li onclick="addHero('king', 'left')"><img src="assets/left/1.png" width="20"> King</li>
+                      <li onclick="addHero('queen', 'left')"><img src="assets/left/2.png" width="20"> Queen</li>
+                      <li onclick="addHero('commander', 'left')"><img src="assets/left/3.png" width="20"> Commander</li>
+                      <li onclick="addHero('troop', 'left')"><img src="assets/left/4.png" width="20"> Troop</li>
+                      <li onclick="addHero('informan', 'left')"><img src="assets/left/5.png" width="20"> Informan</li>
+                      <li onclick="addHero('block-x', 'left', 'block')"><img src="assets/left/6-icon.png" width="20"> Block X</li>
+                      <li onclick="addHero('block-y', 'left', 'block')"><img src="assets/left/7-icon.png" width="20"> Block Y</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="uk-navbar-center">
+                  <div class="uk-navbar-item uk-logo">Battle of Warrior</div>
+                </div>
+    
+                <div class="uk-navbar-right">
+                  <div class="uk-navbar-item">
+                    <button class="uk-button uk-button-secondary uk-border-rounded"><span uk-icon="plus-circle"></span> Hero Right</button>
+                    <div uk-dropdown="mode: click">
+                      <ul class="uk-nav uk-dropdown-nav uk-list-striped">
+                      <li onclick="addHero('king', 'right')"><img src="assets/right/1.png" width="15"> King</li>
+                      <li onclick="addHero('queen', 'right')"><img src="assets/right/2.png" width="15"> Queen</li>
+                      <li onclick="addHero('commander', 'right')"><img src="assets/right/3.png" width="15"> Commander</li>
+                      <li onclick="addHero('troop', 'right')"><img src="assets/right/4.png" width="15"> Troop</li>
+                      <li onclick="addHero('informan', 'right')"><img src="assets/right/5.png" width="15"> Informan</li>
+                      <li onclick="addHero('block-x', 'right', 'block')"><img src="assets/right/6-icon.png" width="20"> Block X</li>
+                      <li onclick="addHero('block-y', 'right', 'block')"><img src="assets/right/7-icon.png" width="20"> Block Y</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+    
+            </div>
+        </div>
+      </nav>
+
+      <div class="">
+        <div class="uk-container wrapper">
+          <div id="dropzone">
+
+          </div>
+        </div>
+      </div>
+      
+      <nav class="uk-navbar-container" uk-sticky="position: bottom">
+        <div class="uk-container">
+            <div uk-navbar>
+              <div class="uk-navbar-left">
+                <div class="panel-left">
+                  <ul class="uk-list uk-list-collapse uk-list-divider">
+                    <li>Score: <span id="scoreLeft"></span></li>
+                    <li>Heroes: <span id="heroesLeft"></span></li>
+                    <li>Blocks: <span id="blocksLeft"></span></li>
+                  </ul>
+                </div>
+                <div class="uk-navbar-item">
+                  <div class="uk-inline">
+                    <button class="uk-button uk-button-default action-game" type="button">Action</button>
+                    <div uk-dropdown="animation: slide-top; animate-out: true; duration: 500">
+                        <ul class="uk-nav uk-dropdown-nav uk-list-divider">
+                          <li onclick="action('select', 'all', 'left', );">Select All</li>
+                          <li onclick="action('select', 'soldiers', 'left', );">Select Soldiers</li>
+                          <li onclick="action('select', 'top', 'left', );">Select King & Queen</li>
+                          <li onclick="action('scatter');">Scatter</li>
+                          <li onclick="action('attack', 'all', 'right');">Attack All</li>
+                          <li onclick="action('attack', 'top', 'right');">Attack King, Queen, & Commander</li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="uk-navbar-center">
+                <div id="timer">00:00:00</div>
+                <div class="uk-navbar-item">
+                  <button class="uk-button uk-button-secondary uk-border-rounded" onclick="execGame()" id="execGame">Start Game</button>
+                  <!-- <input id="test" min="1" max="10" value='1' step="1" onchange="showVal(this.value)" type="range"/> -->
+                  <br>
+                  <button class="uk-button uk-button-primary uk-border-rounded" onclick="saveState();">Save</button>
+                  <button class="uk-button uk-button-danger uk-border-rounded" onclick="clearState()">Clear</button>
+                </div>
+              </div>
+
+              <div class="uk-navbar-right">
+                <div class="panel-right">
+                  <ul class="uk-list uk-list-collapse uk-list-divider">
+                    <li>Score: <span id="scoreRight"></span></li>
+                    <li>Heroes: <span id="heroesRight"></span></li>
+                    <li>Blocks: <span id="blocksRight"></span></li>
+                  </ul>
+                </div>
+                <div class="uk-navbar-item">
+                  <button class="uk-button uk-button-default action-game" type="button">Action</button>
+                    <div uk-dropdown="animation: slide-top; animate-out: true; duration: 500">
+                        <ul class="uk-nav uk-dropdown-nav uk-list-divider">
+                          <li onclick="action('select', 'all', 'right');">Select All</li>
+                          <li onclick="action('select', 'soldiers', 'right', );">Select Soldiers</li>
+                          <li onclick="action('select', 'top', 'right', );">Select King & Queen</li>
+                          <li onclick="action('scatter');">Scatter</li>
+                          <li onclick="action('attack', 'all', 'left');">Attack All</li>
+                          <li onclick="action('attack', 'top', 'left');">Attack King, Queen, & Commander</li>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+    
+            </div>
+        </div>
+      </nav>
+      
+      <audio id="collision" src="assets/audio/collision.mp3"></audio>
+      <audio id="death" src="assets/audio/death.mp3"></audio>
+      <audio id="moving" src="assets/audio/moving.mp3"></audio>
+      <audio id="health" src="assets/audio/health.mp3"></audio>
+      <audio id="victory" src="assets/audio/victory.mp3"></audio>
+
+      <script src="js/app.js"></script>
+    </body>
+</html>

@@ -1,0 +1,119 @@
+.wrapper{
+  overflow: auto;
+}
+
+#dropzone {
+  height: calc(100vh - 200px);
+  position: relative;
+  padding: 15px;
+  border: 1px solid #ddd;
+}
+
+.hero {
+  position: absolute;
+  cursor: move;
+  user-select: none; /* Prevents selecting text on drag */
+  touch-action: none; /* Disables touch events to avoid interference with drag */
+  z-index: 1; /* Ensures dragged element stays on top */
+}
+
+.hero.selected {
+  border: 2px solid red; /* Visual indication of selected elements */
+}
+
+:root {
+  --hero-width: 40px;
+  --hero-height: 70px;
+}
+
+.hero.king {
+  width: calc(var(--hero-width) + 2px);
+  height: calc(var(--hero-height) + 2px);
+}
+
+.hero.queen {
+  width: calc(var(--hero-width) - 2px);
+  height: calc(var(--hero-height) - 2px);
+}
+
+.hero.commander {
+  width: calc(var(--hero-width) - 3px);
+  height: calc(var(--hero-height) - 3px);
+}
+
+.hero.troop {
+  width: calc(var(--hero-width) - 5px);
+  height: calc(var(--hero-height) - 5px);
+}
+
+.hero.informan {
+  width: calc(var(--hero-width) - 7px);
+  height: calc(var(--hero-height) - 7px);
+}
+
+.hero.block-x {
+  width: calc(var(--hero-height) * 2);
+  height: calc(var(--hero-width) / 2);
+}
+
+.hero.block-y {
+  height: calc(var(--hero-height) * 2);
+  width: calc(var(--hero-width) / 2);
+}
+
+.uk-notification {
+  opacity: 0.85;
+}
+
+.uk-notification-message {
+  border: 1px solid #ddd;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 0.8em;
+}
+
+.uk-button {
+  padding: 0 15px;
+}
+
+.panel-left{
+  position: absolute;
+  margin-top: -202px;
+  border: 1px solid #ddd;
+  border-radius: 0 15px 0 0;
+  opacity: 0.75;
+  left: 0px;
+  width: 125px;
+  padding: 5px;
+  background: #fff;
+  z-index: 2;
+}
+
+.panel-right{
+  position: absolute;
+  margin-top: -202px;
+  border: 1px solid #ddd;
+  border-radius: 15px 0 0 0;
+  opacity: 0.75;
+  right: 0;
+  width: 125px;
+  padding: 5px;
+  background: #fff;
+  z-index: 2;
+}
+
+ul.uk-nav li {
+  cursor: pointer;
+}
+
+#timer {
+  position: absolute;
+  margin: -150px auto 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  opacity: 0.75;
+  padding: 5px;
+  width: 100%;
+  text-align: center;
+}
